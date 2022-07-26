@@ -75,7 +75,7 @@ void setup() {
   delay(1000);
   WiFi.softAP(ssidAP, passwordAP); // initialize Wi-Fi with predefined IP address
   WiFi.softAPConfig(local_ip, gateway , subnet);
-  Serial.println("The ESP32 is configured as an Access Point.");
+  Serial.println("ESP32 is configured as an Access Point.\n");
 
   // Print the local IP address
   IPAddress IP = WiFi.softAPIP();
