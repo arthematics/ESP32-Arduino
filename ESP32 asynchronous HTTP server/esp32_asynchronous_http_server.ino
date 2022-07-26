@@ -7,7 +7,7 @@
   Description:
   An asynchronous HTTP web server configuration on the ESP32 microcontroller.
 
-  In Soft Access Point mode, or AP mode, the ESP32 provides a Wi-Fi connection
+  In Access Point mode, or AP mode, the ESP32 provides a Wi-Fi connection
   for external devices. The code in the loop() function definition allows to
   get the number of Wi-Fi stations connected to the network hosted by the ESP32.
 
@@ -68,14 +68,14 @@ void setup() {
   Serial.begin(115200);
   Serial.println("\nSerial communication started.\n");
   
-  // Information about AP setup
-  Serial.println("Setting AP (Access Point)…\n");
+  // Information about Access Point setup
+  Serial.println("Setting Access Point (AP)…\n");
   
-  WiFi.mode(WIFI_AP); // set the ESP32 as an access point (AP mode)
+  WiFi.mode(WIFI_AP); // set the ESP32 as an Access Point (AP mode)
   delay(1000);
   WiFi.softAP(ssidAP, passwordAP); // initialize Wi-Fi with predefined IP address
   WiFi.softAPConfig(local_ip, gateway , subnet);
-  Serial.println("Wi-Fi connected.");
+  Serial.println("The ESP32 is configured as an Access Point.");
 
   // Print the local IP address
   IPAddress IP = WiFi.softAPIP();
