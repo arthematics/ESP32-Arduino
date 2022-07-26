@@ -31,7 +31,7 @@
 AsyncWebServer server(80);
 
 /*
-  Create start web page. The PROGMEM utility allows to store the web page
+  Create a start web page. The PROGMEM utility allows to store the web page
   code in flash (program) memory instead of SRAM. The PROGMEM keyword is
   a variable modifier and it refers to the <avr/pgmspace.h> library.
 
@@ -64,7 +64,7 @@ void setup() {
   // Technical delay for smooth board connecting and serial monitor launch
   delay(7000);
 
-  // Start serial communication
+  // Start a serial communication
   Serial.begin(115200);
   Serial.println("\nSerial communication started.\n");
   
@@ -77,18 +77,18 @@ void setup() {
   WiFi.softAPConfig(local_ip, gateway , subnet);
   Serial.println("Wi-Fi connected.");
 
-  // Print local IP address
+  // Print the local IP address
   IPAddress IP = WiFi.softAPIP();
   Serial.print("AP IP address: ");
   Serial.println(IP);
   Serial.println();
 
-  // Load start web page
+  // Load the start web page
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
     request -> send_P(200, "text/html", startPage);
   });
 
-  // Information about start page status
+  // The start web page status
   Serial.println("Start page is ready to load.\n");
 
   server.begin(); // initialize the asynchronous HTTP server
