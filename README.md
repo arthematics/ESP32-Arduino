@@ -1,4 +1,4 @@
-# ESP32_Arduino
+# ESP32 Arduino
 
 ## Projects:
 
