@@ -16,22 +16,20 @@
 /*
   DEFINED CONSTANTS AND SETTINGS
 */
-#define CONSTANT_NAME value
+#define A_VERY_UNIQUE_CONSTANT_NAME value
 
-const TYPE name = value;
+const type constantName = value;
 
 /*
   LIBRARIES AND FILES
 */
-#include <Servo.h>
-Servo myservo;
+#include <LibraryName.h>
+LibraryName name; // define an object
 
 /*
   VARIABLES
 */
-uint32_t servoTimer;
-boolean servoDirection;
-int servoAngle;
+type someVariable = value;
 
 /*
   SETUP FUNCTION
@@ -48,7 +46,7 @@ void loop() {
 }
 
 /*
-  FUNCTIONS
+  CUSTOM FUNCTION
 */
 void makeSomething() {
 
