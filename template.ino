@@ -48,6 +48,6 @@ void loop() {
 /*
   CUSTOM FUNCTION
 */
-void makeSomething() {
+void DoSomething() {
 
 }
