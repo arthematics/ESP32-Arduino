@@ -18,18 +18,20 @@
 */
 #define A_VERY_UNIQUE_CONSTANT_NAME value
 
-const type constantName = value;
+const type kConstantName = value;
+const type kAbbreviationLikeHttp = value;
 
 /*
   LIBRARIES AND FILES
 */
 #include <LibraryName.h>
-LibraryName name; // define an object
+LibraryName object_name; // define an object
 
 /*
   VARIABLES
 */
-type someVariable = value;
+type some_variable_name = value;
+type abbreviation_like_http = value;
 
 /*
   SETUP FUNCTION
@@ -48,6 +50,6 @@ void loop() {
 /*
   CUSTOM FUNCTION
 */
-void DoSomething() {
+void DoSomethingUseful(type parameter_name) {
 
 }
