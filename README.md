@@ -13,3 +13,11 @@
 * **ESP32 web server for camera control**
   
   Description:
+
+## Files:
+
+* **template.ino**
+  
+  Description:
+
+  A handle template based on [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html) with some modification for Arduino IDE.
