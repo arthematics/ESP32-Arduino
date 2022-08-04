@@ -20,4 +20,4 @@
   
   Description:
 
-  A handle template based on [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html) with some modification for Arduino IDE.
+  A practical template based on [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html) with some modification for Arduino IDE.
