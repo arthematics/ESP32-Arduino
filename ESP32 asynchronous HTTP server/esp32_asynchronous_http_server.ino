@@ -1,4 +1,4 @@
-/*********
+/*****************************************************************************80
   Artem Pokintelitsa
 
   Name:
@@ -16,21 +16,11 @@
   Alexander Mayorov aka AlexGyver (alexgyver.ru)
   Nuno Santos (techtutorialsx.com)
   Rui Santos and Sara Santos (randomnerdtutorials.com)
-*********/
-
-#include <WiFi.h>
-#include <AsyncTCP.h>
-#include <ESPAsyncWebServer.h>
+*******************************************************************************/
 
 /*
-  Declare a variable of class AsyncWebServer. It will be used to set up
-  the asynchronous HTTP server. HTTP communication takes place over TCP/IP
-  connections. This requires a port number where the server will be listening.
-  The default port is 80.
-*/
-AsyncWebServer server(80);
+  DEFINED CONSTANTS AND SETTINGS
 
-/*
   Create a start web page. The PROGMEM utility allows to store the web page
   code in flash (program) memory instead of SRAM. The PROGMEM keyword is
   a variable modifier and it refers to the <avr/pgmspace.h> library.
@@ -39,7 +29,7 @@ AsyncWebServer server(80);
   between the round brackets as a raw string. This is a practical way to
   handle long strings containing quotation marks.
 */
-const char startPage[] PROGMEM = R"rawliteral(
+const char kStartPage[] PROGMEM = R"rawliteral(
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,12 +44,38 @@ const char startPage[] PROGMEM = R"rawliteral(
 </html>
 )rawliteral";
 
-char ssidAP[]     = "ESP32 Wi-Fi LAN";  // WLAN SSID
-char passwordAP[] = "12345678";         // WLAN password
-IPAddress local_ip(192, 168, 2, 3);     // pre-defined IP address values
-IPAddress gateway(192, 168, 2, 3);
-IPAddress subnet(255, 255, 255, 0);
+/*
+  LIBRARIES AND FILES
+*/
+#include <WiFi.h>
+#include <AsyncTCP.h>
+#include <ESPAsyncWebServer.h>
 
+/*
+  Declare a variable of class AsyncWebServer. It will be used to set up
+  the asynchronous HTTP server. HTTP communication takes place over TCP/IP
+  connections. This requires a port number where the server will be listening.
+  The default port is 80.
+*/
+AsyncWebServer server(80);
+
+/*
+  VARIABLES
+
+  A gateway is a network node that serves as an access point to another network.
+  The address range assignable to hosts is from 192.168.10.1 to 192.168.10.254
+  because the TCP/IP defines the addresses 192.168.10.0 and 192.168.10.255 for
+  special functions.
+*/
+char wifi_ssid[13] = "ESP32 NETWORK"; // set Wi-Fi LAN SSID
+char wifi_password[8] = "12345678";   // set Wi-Fi LAN password
+IPAddress local_ip(192, 168, 10, 10); // set a static IP address
+IPAddress gateway(192, 168, 10, 1);   // set a gateway IP address
+IPAddress subnet(255, 255, 255, 0);   // a subnet mask of the network
+
+/*
+  SETUP FUNCTION
+*/
 void setup() {
   // Technical delay for smooth board connecting and serial monitor launch
   delay(7000);
@@ -94,6 +110,9 @@ void setup() {
   server.begin(); // initialize the asynchronous HTTP server
 }
 
+/*
+  LOOP FUNCTION
+*/
 void loop() {
   /*
   The softAPgetStationNum method returns the number of stations connected to
@@ -103,4 +122,11 @@ void loop() {
   Serial.println(WiFi.softAPgetStationNum());
   Serial.println();
   delay(20000);
+}
+
+/*
+  CUSTOM FUNCTION
+*/
+void DoSomethingUseful(type parameter_name) {
+
 }
