@@ -10,6 +10,9 @@
   In Access Point mode, or AP mode, the ESP32 provides a Wi-Fi connection
   for external devices. The code in the loop() function definition allows to
   get the number of Wi-Fi stations connected to the network hosted by the ESP32.
+  
+  Notes:
+  Training project.
 
   Acknowledgements:
   Neil Cameron
@@ -63,7 +66,8 @@ AsyncWebServer server(80);
   VARIABLES
 
   A gateway is a network node that serves as an access point to another network.
-  A subnet mask is a 32-bit number that masks an IP address and divides the IP address into network address and host address.
+  A subnet mask is a 32-bit number that masks an IP address and divides the IP
+  address into network address and host address.
   The address range assignable to hosts is from 192.168.10.1 to 192.168.10.254
   because the TCP/IP defines the addresses 192.168.10.0 and 192.168.10.255 for
   special functions.
