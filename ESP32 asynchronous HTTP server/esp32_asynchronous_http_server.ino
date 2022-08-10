@@ -63,15 +63,16 @@ AsyncWebServer server(80);
   VARIABLES
 
   A gateway is a network node that serves as an access point to another network.
+  A subnet mask is a 32-bit number that masks an IP address and divides the IP address into network address and host address.
   The address range assignable to hosts is from 192.168.10.1 to 192.168.10.254
   because the TCP/IP defines the addresses 192.168.10.0 and 192.168.10.255 for
   special functions.
 */
-char wifi_ssid[13] = "ESP32 NETWORK"; // set Wi-Fi LAN SSID
-char wifi_password[8] = "12345678";   // set Wi-Fi LAN password
-IPAddress local_ip(192, 168, 10, 10); // set a static IP address
-IPAddress gateway(192, 168, 10, 1);   // set a gateway IP address
-IPAddress subnet(255, 255, 255, 0);   // a subnet mask of the network
+char wifi_ssid[13] = "ESP32 NETWORK";    // set Wi-Fi LAN SSID
+char wifi_password[8] = "12345678";      // set Wi-Fi LAN password
+IPAddress local_ip(192, 168, 10, 10);    // set a static IP address
+IPAddress gateway(192, 168, 10, 1);      // set a gateway IP address
+IPAddress subnet_mask(255, 255, 255, 0); // set a subnet mask of the network
 
 /*
   SETUP FUNCTION
