@@ -81,8 +81,8 @@ AsyncWebServer server(80);
   DNS server should be used when a project involves converting domain names into
   IP addresses.
 */
-char wifi_ssid[13] = "ESP32 NETWORK";    // set Wi-Fi LAN SSID
-char wifi_password[8] = "12345678";      // set Wi-Fi LAN password
+char wifi_ssid[14] = "ESP32 NETWORK";    // set Wi-Fi LAN SSID
+char wifi_password[9] = "12345678";      // set Wi-Fi LAN password
 IPAddress local_ip(192, 168, 10, 10);    // set the static IP address
 IPAddress gateway_ip(192, 168, 10, 1);   // set the gateway IP address
 IPAddress subnet_mask(255, 255, 255, 0); // set the subnet mask of the network
@@ -128,8 +128,8 @@ void setup() {
   
   // Information about how to access the start page
   Serial.print("The start web page is available at http://");
-  Serial.print(ip_address);
-  Serial.print("/\n");
+  Serial.print(my_local_ip);
+  Serial.print("/\n\n");
 
   server.begin(); // initialize the asynchronous HTTP server
 }
