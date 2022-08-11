@@ -11,7 +11,7 @@
   for external devices. The code in the loop() function definition allows to
   get the number of Wi-Fi stations connected to the network hosted by the ESP32.
   
-  A static IP address is used. Thus, the ESP 32 does not use DHCP to get IP
+  A static IP address is used. Thus, the ESP32 does not use DHCP to get IP
   parameters, and they must be configured directly during the implementation of
   the softAPConfig method.
   
