@@ -11,6 +11,10 @@
   for external devices. The code in the loop() function definition allows to
   get the number of Wi-Fi stations connected to the network hosted by the ESP32.
   
+  A static IP address is used. Thus, the ESP 32 does not use DHCP to get IP
+  parameters, and they must be configured directly during the implementation of
+  the softAPConfig method.
+  
   Notes:
   Training project.
 
@@ -71,12 +75,17 @@ AsyncWebServer server(80);
   The address range assignable to hosts is from 192.168.10.1 to 192.168.10.254
   because the TCP/IP defines the addresses 192.168.10.0 and 192.168.10.255 for
   special functions.
+  
+  Note: If the ESP32 module is used in STA mode, it is needed to specify the DNS
+  IP address as follows IPAddress dns_ip(192, 168, 10, 1). The IP address of the
+  DNS server should be used when a project involves converting domain names into
+  IP addresses.
 */
 char wifi_ssid[13] = "ESP32 NETWORK";    // set Wi-Fi LAN SSID
 char wifi_password[8] = "12345678";      // set Wi-Fi LAN password
-IPAddress local_ip(192, 168, 10, 10);    // set a static IP address
-IPAddress gateway(192, 168, 10, 1);      // set a gateway IP address
-IPAddress subnet_mask(255, 255, 255, 0); // set a subnet mask of the network
+IPAddress local_ip(192, 168, 10, 10);    // set the static IP address
+IPAddress gateway_ip(192, 168, 10, 1);   // set the gateway IP address
+IPAddress subnet_mask(255, 255, 255, 0); // set the subnet mask of the network
 
 /*
   SETUP FUNCTION
@@ -92,46 +101,48 @@ void setup() {
   // Information about Access Point setup
   Serial.println("Setting Access Point (AP)…\n");
   
-  WiFi.mode(WIFI_AP); // set the ESP32 as an Access Point (AP mode)
+  /*
+    Set the ESP32 as an Access Point (AP mode) and configure it with the
+    predefined parameters. Wi-Fi clients (stations) can connect to the Access
+    Point using the network credentials defined above.
+  */
+  WiFi.mode(WIFI_AP); // set the AP mode
   delay(1000);
-  WiFi.softAP(ssidAP, passwordAP); // initialize Wi-Fi with predefined IP address
-  WiFi.softAPConfig(local_ip, gateway, subnet);
+  WiFi.softAP(wifi_ssid, wifi_password); // initialize Wi-Fi LAN
+  WiFi.softAPConfig(local_ip, gateway_ip, subnet_mask);
   Serial.println("ESP32 is configured as an Access Point.\n");
 
   // Print the local IP address
-  IPAddress IP = WiFi.softAPIP();
+  IPAddress my_local_ip = WiFi.softAPIP();
   Serial.print("AP IP address: ");
-  Serial.println(IP);
+  Serial.println(my_local_ip);
   Serial.println();
 
   // Load the start web page
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
-    request -> send_P(200, "text/html", startPage);
+    request -> send_P(200, "text/html", kStartPage);
   });
 
   // The start web page status
   Serial.println("Start page is ready to load.\n");
+  
+  // Information about how to access the start page
+  Serial.print("The start web page is available at http://");
+  Serial.print(ip_address);
+  Serial.print("/\n");
 
   server.begin(); // initialize the asynchronous HTTP server
 }
 
 /*
   LOOP FUNCTION
+  
+  The softAPgetStationNum method returns the number of stations connected to
+  the Wi-Fi local network. The result will be printed to the serial monitor.
 */
 void loop() {
-  /*
-  The softAPgetStationNum method returns the number of stations connected to
-  the Wi-Fi local network. The result will be printed to the serial port.
-  */
   Serial.print("Stations connected: ");
   Serial.println(WiFi.softAPgetStationNum());
   Serial.println();
   delay(20000);
-}
-
-/*
-  CUSTOM FUNCTION
-*/
-void DoSomethingUseful(type parameter_name) {
-
 }
