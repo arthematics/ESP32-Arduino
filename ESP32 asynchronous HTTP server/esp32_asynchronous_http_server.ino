@@ -16,7 +16,8 @@
   the softAPConfig method.
   
   Notes:
-  Training project.
+  Training project. The Wi-Fi API is implemented using libraries from Arduino
+  core for the ESP32.
 
   Acknowledgements:
   Neil Cameron
