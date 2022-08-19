@@ -27,6 +27,21 @@
 *******************************************************************************/
 
 /*
+  LIBRARIES AND FILES
+*/
+#include <WiFi.h>
+#include <AsyncTCP.h>
+#include <ESPAsyncWebServer.h>
+
+/*
+  Declare an object of class AsyncWebServer. It will be used to set up the
+  asynchronous HTTP server. HTTP communication takes place over TCP/IP
+  connections. This requires a port number where the server will be listening.
+  The default port is 80.
+*/
+AsyncWebServer server(80);
+
+/*
   DEFINED CONSTANTS AND SETTINGS
 
   Create a start web page. The PROGMEM utility allows to store the web page
@@ -51,21 +66,6 @@ const char kStartPage[] PROGMEM = R"rawliteral(
 </body>
 </html>
 )rawliteral";
-
-/*
-  LIBRARIES AND FILES
-*/
-#include <WiFi.h>
-#include <AsyncTCP.h>
-#include <ESPAsyncWebServer.h>
-
-/*
-  Declare a variable of class AsyncWebServer. It will be used to set up
-  the asynchronous HTTP server. HTTP communication takes place over TCP/IP
-  connections. This requires a port number where the server will be listening.
-  The default port is 80.
-*/
-AsyncWebServer server(80);
 
 /*
   VARIABLES
