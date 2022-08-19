@@ -15,18 +15,18 @@
 *******************************************************************************/
 
 /*
+  LIBRARIES AND FILES
+*/
+#include <LibraryName.h>
+LibraryName object_name; // define an object
+
+/*
   DEFINED CONSTANTS AND SETTINGS
 */
 #define A_VERY_UNIQUE_CONSTANT_NAME value
 
 const type kConstantName = value;
 const type kAbbreviationLikeHttp = value;
-
-/*
-  LIBRARIES AND FILES
-*/
-#include <LibraryName.h>
-LibraryName object_name; // define an object
 
 /*
   VARIABLES
