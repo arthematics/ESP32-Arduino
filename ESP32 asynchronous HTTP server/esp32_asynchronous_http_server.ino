@@ -5,7 +5,7 @@
   ESP32 asynchronous HTTP server
 
   Description:
-  An asynchronous HTTP web server configuration on the ESP32 microcontroller.
+  An asynchronous HTTP server configuration on the ESP32 microcontroller.
 
   In Access Point mode, or AP mode, the ESP32 provides a Wi-Fi connection
   for external devices. The code in the loop() function definition allows to
@@ -119,16 +119,16 @@ void setup() {
   Serial.println(my_local_ip);
   Serial.println();
 
-  // Load the start web page
+  // Load the start HTML page
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
     request -> send_P(200, "text/html", kStartPage);
   });
 
-  // The start web page status
+  // The start page status
   Serial.println("Start page is ready to load.\n");
   
   // Information about how to access the start page
-  Serial.print("The start web page is available at http://");
+  Serial.print("The start page is available at http://");
   Serial.print(my_local_ip);
   Serial.print("/\n\n");
 
